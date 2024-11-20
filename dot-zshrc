@@ -119,10 +119,11 @@ if [[ -z "${SSH_CONNECTION}" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 bindkey -M viins 'jk' vi-cmd-mode
+source <(fzf --zsh)
 
 # bun completions
-[ -s "/home/jack/.bun/_bun" ] && source "/home/jack/.bun/_bun"
+#[ -s "/home/jack/.bun/_bun" ] && source "/home/jack/.bun/_bun"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+#export BUN_INSTALL="$HOME/.bun"
+#export PATH="$BUN_INSTALL/bin:$PATH"
