@@ -99,7 +99,7 @@ require("lazy").setup({
 	ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
 	sync_install = false,
 	auto_install = true,
-	ignore_install = { "javascript" },
+	-- ignore_install = { "javascript" },
 	highlight = {
 	  enable = true,
 	  additional_vim_regex_highlighting = false,
@@ -206,6 +206,9 @@ require("lazy").setup({
 	  Lua = {}
 	}
       }
+
+      lspconfig.tflint.setup {}
+      lspconfig.ts_ls.setup {}
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
