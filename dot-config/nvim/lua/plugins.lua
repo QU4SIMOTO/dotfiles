@@ -81,22 +81,11 @@ require("lazy").setup({
       require("alpha").setup(require("alpha.themes.startify").config)
     end
   },
-  --{
-  --  "nvim-tree/nvim-tree.lua",
-  --  config = function()
-  --    vim.keymap.set("", "<C-b>", "<cmd>NvimTreeToggle<cr>")
-  --    require("nvim-tree").setup({
---	filters = {
---	  dotfiles = false,
---	}
- --     })
-  --  end
---   },
   {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup {
-	ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "haskell", "rust" },
 	sync_install = false,
 	auto_install = true,
 	-- ignore_install = { "javascript" },
@@ -180,9 +169,6 @@ require("lazy").setup({
 	lspconfig.bash_lsp.setup {}
       end
 
-      -- TS LSP
-      -- lspconfig.tsserver.setup {}
-
       lspconfig.lua_ls.setup {
 	on_init = function(client)
 	  local path = client.workspace_folders[1].name
@@ -209,6 +195,9 @@ require("lazy").setup({
 
       lspconfig.tflint.setup {}
       lspconfig.ts_ls.setup {}
+      lspconfig.hls.setup {
+	filetypes = { "haskell", "lhaskel", "cabal" }
+      }
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
