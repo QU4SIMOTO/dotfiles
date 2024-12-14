@@ -1,3 +1,3 @@
-require("options")
-require("plugins")
-require("auto")
+require("config.options")
+require("config.lazy")
+require("config.auto")
