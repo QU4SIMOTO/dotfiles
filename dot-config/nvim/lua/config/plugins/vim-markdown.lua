@@ -1,7 +1,7 @@
 return {
   {
     "plasticboy/vim-markdown",
-    ft = { "markdown" },
+    ft = { "markdown", },
     dependencies = {
       "godlygeek/tabular",
     },
@@ -15,6 +15,6 @@ return {
       -- don"t add bullets when wrapping:
       -- https://github.com/preservim/vim-markdown/issues/232
       vim.g.vim_markdown_auto_insert_bullets = 0
-    end
+    end,
   },
 }
