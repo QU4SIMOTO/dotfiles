@@ -1,7 +1,7 @@
 return function()
   require "telescope".setup {
     defaults = {
-      file_ignore_patterns = { "Cargo.lock" },
+      file_ignore_patterns = { "Cargo.lock", "package-lock.json", },
     },
   }
   local dotconfig = os.getenv("HOME") .. "/dotfiles/dot-config"
@@ -11,7 +11,7 @@ return function()
   vim.keymap.set("n", "<leader>fh", builtin.help_tags)
   vim.keymap.set("n", "<leader>fb", builtin.buffers)
   vim.keymap.set("n", "<leader>fr", builtin.resume)
-  vim.keymap.set("n", "<leader>fa",
+  vim.keymap.set("n", "<leader>fp",
     function()
       ---@diagnostic disable-next-line: param-type-mismatch
       builtin.find_files { cwd = vim.fs.joinpath(vim.fn.stdpath "data", "lazy") }
@@ -21,14 +21,14 @@ return function()
   vim.keymap.set("n", "<leader>fc", function()
       builtin.find_files {
         cwd = dotconfig,
-        file_ignore_patterns = "^nvim/",
+        file_ignore_patterns = { "^nvim/", },
       }
     end,
-    { desc = "Find file in dotconfig", }
+    { desc = "Find file in dotconfig (excluding nvim which is on a different map)", }
   )
   vim.keymap.set("n", "<leader>fn",
     function()
       builtin.find_files { cwd = dotconfig .. "/nvim" }
     end,
-    { desc = "File file in nvim config", })
+    { desc = "Find file in nvim config", })
 end

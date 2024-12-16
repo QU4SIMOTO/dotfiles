@@ -20,6 +20,7 @@ return function()
       },
     },
   }
+
   -- Bash LSP
   local configs = require "lspconfig.configs"
   if not configs.bash_lsp and vim.fn.executable("bash-language-server") == 1 then
@@ -39,6 +40,7 @@ return function()
   if configs.bash_lsp then
     lspconfig.bash_lsp.setup {}
   end
+
   -- Lua LSP
   lspconfig.lua_ls.setup {
     on_init = function(client)
@@ -63,10 +65,13 @@ return function()
       Lua = {}
     }
   }
+
   -- Terraform LSP
   lspconfig.tflint.setup {}
+
   -- Typescript LSP
   lspconfig.ts_ls.setup {}
+
   -- Haskell LSP
   lspconfig.hls.setup {
     filetypes = { "haskell", "lhaskel", "cabal" }
