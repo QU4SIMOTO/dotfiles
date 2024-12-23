@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require "lazy".setup({
   spec = {
     { import = "config.plugins" },
+    { dir = "~/projects/plugins/hangman.nvim" }
   },
   change_detection = {
     notify = false,
