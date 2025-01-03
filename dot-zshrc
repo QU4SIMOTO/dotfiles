@@ -22,8 +22,6 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
-source /usr/share/nvm/init-nvm.sh
-
 alias s="source ~/.zshrc"
 alias cr="cargo run"
 alias ct="cargo test"
@@ -33,6 +31,7 @@ alias vim="nvim"
 alias ll="ls -l"
 alias la="ls -la"
 alias sess="~/bin/tmux-sessionizer"
+alias snvm="source /usr/share/nvm/init-nvm.sh"
 
 if [[ -z "${SSH_CONNECTION}" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
