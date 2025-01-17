@@ -2,23 +2,23 @@ return function()
   local lspconfig = require("lspconfig")
   -- Rust LSP
   lspconfig.rust_analyzer.setup {
-    settings = {
-      ["rust-analyzer"] = {
-        cargo = {
-          allFeatures = true,
-        },
-        imports = {
-          group = {
-            enable = false,
-          },
-        },
-        completion = {
-          postfix = {
-            enable = false,
-          },
-        },
-      },
-    },
+    --settings = {
+    --  ["rust-analyzer"] = {
+    --    cargo = {
+    --      allFeatures = true,
+    --    },
+    --    imports = {
+    --      group = {
+    --        enable = false,
+    --      },
+    --    },
+    --    completion = {
+    --      postfix = {
+    --        enable = false,
+    --      },
+    --    },
+    --  },
+    --},
   }
 
   -- Bash LSP
@@ -77,6 +77,9 @@ return function()
     filetypes = { "haskell", "lhaskel", "cabal" }
   }
 
+  -- Markdown LSP
+  lspconfig.marksman.setup {}
+
   -- Global mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
@@ -101,7 +104,8 @@ return function()
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
       vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
       -- vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+      -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+      vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
       vim.keymap.set("n", "<C-f>", function()
         vim.lsp.buf.format { async = true }
       end, opts)
