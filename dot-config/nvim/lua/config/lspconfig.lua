@@ -80,6 +80,19 @@ return function()
   -- Markdown LSP
   lspconfig.marksman.setup {}
 
+  lspconfig.pylsp.setup {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            ignore = { 'W391' },
+            maxLineLength = 100
+          }
+        }
+      }
+    }
+  }
+
   -- Global mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
