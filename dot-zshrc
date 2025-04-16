@@ -1,6 +1,7 @@
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.volta/bin:$HOME/.cargo/bin:$PATH
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export WORK="$HOME/work"
 
 # Set name of the theme to load --- if set to "random", it will
 ZSH_THEME="robbyrussell"
@@ -11,6 +12,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source $WORK/alias.zsh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -33,6 +35,9 @@ alias la="ls -la"
 alias sess="~/bin/tmux-sessionizer"
 alias snvm="source /usr/share/nvm/init-nvm.sh"
 
+function record { wf-recorder -g "$(slurp)" -f "${1:-$HOME/recording}.mkv" }
+function recording-to-mp4 { ffmpeg -i "${1:-$HOME/recording}.mkv" -codec copy  "${1:-$HOME/recording}.mp4" }
+
 if [[ -z "${SSH_CONNECTION}" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
@@ -40,9 +45,3 @@ fi
 bindkey -M viins 'jk' vi-cmd-mode
 source <(fzf --zsh)
 
-# bun completions
-#[ -s "/home/jack/.bun/_bun" ] && source "/home/jack/.bun/_bun"
-
-# bun
-#export BUN_INSTALL="$HOME/.bun"
-#export PATH="$BUN_INSTALL/bin:$PATH"
