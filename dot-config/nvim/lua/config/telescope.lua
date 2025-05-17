@@ -30,7 +30,9 @@ return function()
   vim.keymap.set("n", "<leader>fc", function()
       builtin.find_files {
         cwd = dotconfig,
-        file_ignore_patterns = { "**/nvim", },
+        file_ignore_patterns = { "**/nvim", ".git" },
+        no_ignore = false,
+        hidden = true,
       }
     end,
     { desc = "Find file in dotconfig (excluding nvim which is on a different map)", }
