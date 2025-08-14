@@ -4,7 +4,8 @@ opacity = 0.75
 [colors]
 
 [font]
-size = 10.0
+size = 18.0
+#size = 10.0
 
 [font.normal]
 family = "Hack Nerd Font Mono"

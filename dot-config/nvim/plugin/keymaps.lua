@@ -1,7 +1,7 @@
 vim.keymap.set("n", "<Space>", "<Nop>",{ silent = true, desc = "Space is the leader key" })
 vim.keymap.set("i", "jk", "<ESC>", { desc = "Escape is annoying to reach", })
-vim.keymap.set("n", "<Leader><Leader>", "<c-^>", { desc = "Toggle most recent buffer" })
 vim.keymap.set("n", "<Leader>w", "<Cmd>w<CR>", { desc = "Save current buffer" })
+vim.keymap.set("n", "<Leader><Leader>", "<c-^>", { desc = "Toggle most recent buffer" })
 vim.keymap.set('n', "<Leader>m", "ct_", { desc = "Replace up to '_'" })
 
 -- Execute lua
