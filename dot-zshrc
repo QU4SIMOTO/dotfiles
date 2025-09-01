@@ -35,8 +35,8 @@ alias la="ls -la"
 alias sess="~/bin/tmux-sessionizer"
 alias snvm="source /usr/share/nvm/init-nvm.sh"
 
-function record { wf-recorder -g "$(slurp)" -f "${1:-$HOME/recording}.mkv" }
-function recording-to-mp4 { ffmpeg -i "${1:-$HOME/recording}.mkv" -codec copy  "${1:-$HOME/recording}.mp4" }
+function record { wf-recorder -g "$(slurp)" -f "${2:-$HOME/recording}.mkv" }
+function recording-to-mp4 { ffmpeg -i "${1:-$HOME/recording}.mkv" -codec copy  "${2:-$HOME/recording}.mp4" }
 
 if [[ -z "${SSH_CONNECTION}" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
