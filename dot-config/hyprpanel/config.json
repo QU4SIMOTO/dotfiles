@@ -1,6 +1,6 @@
 {
   "bar.customModules.updates.pollingInterval": 1440000,
-  "theme.font.size": "1.6rem",
+  "theme.font.size": "2rem",
   "menus.transition": "none",
   "theme.bar.scaling": 55,
   "theme.notification.scaling": 40,
