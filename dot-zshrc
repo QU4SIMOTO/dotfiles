@@ -33,7 +33,8 @@ alias vim="nvim"
 alias ll="ls -l"
 alias la="ls -la"
 alias sess="~/bin/tmux-sessionizer"
-alias snvm="source /usr/share/nvm/init-nvm.sh"
+alias ssh-picker="~/bin/ssh-picker"
+#alias snvm="source /usr/share/nvm/init-nvm.sh"
 
 function record { wf-recorder -g "$(slurp)" -f "${2:-$HOME/recording}.mkv" }
 function recording-to-mp4 { ffmpeg -i "${1:-$HOME/recording}.mkv" -codec copy  "${2:-$HOME/recording}.mp4" }
