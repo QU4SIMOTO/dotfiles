@@ -1,57 +1,55 @@
 return function()
-  local lspconfig = require("lspconfig")
-  -- Rust LSP
-  lspconfig.rust_analyzer.setup {
-    --settings = {
-    --  ["rust-analyzer"] = {
-    --    cargo = {
-    --      allFeatures = true,
-    --    },
-    --    imports = {
-    --      group = {
-    --        enable = false,
-    --      },
-    --    },
-    --    completion = {
-    --      postfix = {
-    --        enable = false,
-    --      },
-    --    },
-    --  },
-    --},
+  vim.lsp.config('rust_analyzer', {
+    settings = {
+      ['rust-analyzer'] = {},
+    },
+  })
+
+  vim.lsp.config.bashls = {
+    cmd = { 'bash-language-server', 'start' },
+    filetypes = { 'bash', 'sh' }
   }
+  vim.lsp.enable 'bashls'
 
   -- Bash LSP
-  local configs = require "lspconfig.configs"
-  if not configs.bash_lsp and vim.fn.executable("bash-language-server") == 1 then
-    configs.bash_lsp = {
-      default_config = {
-        cmd = { "bash-language-server", "start" },
-        filetypes = { "sh" },
-        root_dir = require("lspconfig").util.find_git_ancestor,
-        init_options = {
-          settings = {
-            args = {}
-          }
-        }
-      }
-    }
-  end
-  if configs.bash_lsp then
-    lspconfig.bash_lsp.setup {}
-  end
+  --if not vim.lsp.config('bash_lsp') and vim.fn.executable("bash-language-server") == 1 then
+  --  configs.bash_lsp = {
+  --    default_config = {
+  --      cmd = { "bash-language-server", "start" },
+  --      filetypes = { "sh" },
+  --      root_dir = require("lspconfig").util.find_git_ancestor,
+  --      init_options = {
+  --        settings = {
+  --          args = {}
+  --        }
+  --      }
+  --    }
+  --  }
+  --end
+  --if configs.bash_lsp then
+  --  lspconfig.bash_lsp.setup {}
+  --end
 
   -- Lua LSP
-  lspconfig.lua_ls.setup {
+  vim.lsp.config('lua_ls', {
     on_init = function(client)
-      local path = client.workspace_folders[1].name
-      if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-        return
+      if client.workspace_folders then
+        local path = client.workspace_folders[1].name
+        if
+          path ~= vim.fn.stdpath('config')
+          and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+        then
+          return
+        end
       end
 
       client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
         runtime = {
-          version = 'LuaJIT'
+          version = 'LuaJIT',
+          path = {
+            'lua/?.lua',
+            'lua/?/init.lua',
+          },
         },
         workspace = {
           checkThirdParty = false,
@@ -64,23 +62,24 @@ return function()
     settings = {
       Lua = {}
     }
-  }
+  })
+  vim.lsp.enable'lua_ls'
 
   -- Terraform LSP
-  lspconfig.tflint.setup {}
+  vim.lsp.enable'tflint'
 
   -- Typescript LSP
-  lspconfig.ts_ls.setup {}
+  vim.lsp.enable'ts_ls'
 
   -- Haskell LSP
-  lspconfig.hls.setup {
+  vim.lsp.config('hls', {
     filetypes = { "haskell", "lhaskel", "cabal" }
-  }
+  })
 
   -- Markdown LSP
-  lspconfig.marksman.setup {}
+  vim.lsp.enable'marksman'
 
-  lspconfig.pylsp.setup {
+  vim.lsp.config('pylsp', {
     settings = {
       pylsp = {
         plugins = {
@@ -91,10 +90,10 @@ return function()
         }
       }
     }
-  }
+  })
 
   -- Zig LSP
-  lspconfig.zls.setup {}
+  vim.lsp.enable'zls'
 
   -- Global mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
