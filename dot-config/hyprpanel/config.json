@@ -393,5 +393,8 @@
   "theme.bar.transparent": false,
   "theme.bar.opacity": 60,
   "theme.bar.buttons.monochrome": false,
-  "theme.matugen": false
+  "theme.matugen": false,
+  "bar.customModules.storage.paths": [
+    "/"
+  ]
 }

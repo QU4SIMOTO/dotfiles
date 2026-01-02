@@ -35,6 +35,8 @@ alias ll="ls -l"
 alias la="ls -la"
 alias sess="~/bin/tmux-sessionizer"
 alias ssh-picker="~/bin/ssh-picker"
+alias hyp="start-hyprland"
+
 #alias snvm="source /usr/share/nvm/init-nvm.sh"
 
 function record { wf-recorder -g "$(slurp)" -f "${2:-$HOME/recording}.mkv" }
