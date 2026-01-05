@@ -1,7 +1,52 @@
 return function()
-  require "telescope".setup {
+  local telescope = require "telescope"
+  local actions = require "telescope.actions"
+
+  telescope.setup {
     defaults = {
-      file_ignore_patterns = { "Cargo.lock", "package-lock.json", },
+      file_ignore_patterns = { "Cargo.lock", "package-lock.json", "node_modules", ".git/" },
+      mappings = {
+        i = {
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+          ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+          ["<Esc>"] = actions.close,
+        },
+      },
+      layout_config = {
+        horizontal = {
+          preview_width = 0.55,
+          results_width = 0.8,
+        },
+        vertical = {
+          mirror = false,
+        },
+        width = 0.87,
+        height = 0.80,
+        preview_cutoff = 120,
+      },
+      path_display = { "truncate" },
+      sorting_strategy = "ascending",
+      layout_strategy = "horizontal",
+    },
+    pickers = {
+      find_files = {
+        hidden = true,
+        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+      },
+      live_grep = {
+        additional_args = function()
+          return { "--hidden" }
+        end,
+      },
+      buffers = {
+        sort_lastused = true,
+        mappings = {
+          i = {
+            ["<C-d>"] = actions.delete_buffer,
+          },
+        },
+      },
     },
   }
   local dotconfig = os.getenv("HOME") .. "/dotfiles"

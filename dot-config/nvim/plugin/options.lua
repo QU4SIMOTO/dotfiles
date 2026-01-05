@@ -22,7 +22,7 @@ vim.opt.shiftwidth = 2
 vim.opt.smarttab = true
 vim.opt.softtabstop = 0
 vim.opt.tabstop = 8
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 --" Decent wildmenu
 -- in completion, when there is more than one match,
 -- list all matches, and only complete to longest common match

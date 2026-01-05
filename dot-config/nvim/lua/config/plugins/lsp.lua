@@ -6,7 +6,6 @@ return {
         "folke/lazydev.nvim",
         ft = "lua",
       },
-      "stevearc/conform.nvim",
     },
     config = require "config.lspconfig",
   },

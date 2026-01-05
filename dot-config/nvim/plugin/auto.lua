@@ -3,7 +3,9 @@ vim.api.nvim_create_autocmd(
   "TextYankPost",
   {
     pattern = "*",
-    command = 'silent! lua vim.highlight.on_yank({ timeout = 500 })',
+    callback = function()
+      vim.highlight.on_yank({ timeout = 500 })
+    end,
   }
 )
 
@@ -29,3 +31,11 @@ vim.api.nvim_create_autocmd(
   "InsertLeave",
   { pattern = "*", command = 'set nopaste', }
 )
+
+-- for psql temp files, set filetype to sql
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = "/tmp/psql.edit*",
+  callback = function()
+    vim.bo.filetype = "sql"
+  end,
+})

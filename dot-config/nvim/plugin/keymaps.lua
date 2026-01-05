@@ -13,6 +13,11 @@ vim.keymap.set("n", "<Leader>xx", "<Cmd>source %<CR>", { desc = "Execute the cur
 vim.keymap.set({ "n", "x" }, "<Leader>c", '"+y')
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p')
 
+-- Format buffer
+vim.keymap.set({ "n", "v" }, "<Leader>f", function()
+  require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format buffer" })
+
 -- always center search results
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })

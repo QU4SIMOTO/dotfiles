@@ -1,7 +1,7 @@
 return function()
   vim.o.showmode = false
   vim.g.lightline = {
-    colorscheme = "one",
+    colorscheme = "nord",
     active = {
       left = {
         { "mode",      "paste" },
