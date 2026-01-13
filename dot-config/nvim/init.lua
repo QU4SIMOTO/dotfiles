@@ -23,7 +23,7 @@ require "lazy".setup({
     notify = false,
   },
   dev = {
-    path = "~/projects/plugins",
+    path = "~/personal/plugins",
     fallback = false,
   },
   readme = {
