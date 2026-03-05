@@ -25,6 +25,21 @@ return function()
   }
   vim.lsp.enable 'bashls'
 
+
+  --vim.lsp.config.clangd = {
+  --  cmd = {
+  --    'clangd',
+  --    '--background-index',
+  --    '--clang-tidy',
+  --    '--completion-style=detailed',
+  --    '--header-insertion=never',
+  --    '--query-driver=/usr/bin/*',
+  --    '--fallback-style=LLVM',
+  --  },
+  --}
+  --vim.lsp.enable 'clangd'
+
+
   -- Lua LSP
   vim.lsp.config('lua_ls', {
     on_init = function(client)
