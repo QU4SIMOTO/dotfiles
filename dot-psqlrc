@@ -1,0 +1,12 @@
+\set HISTCONTROL ignoredups
+\pset null '[NULL]'
+\pset format aligned
+\timing on
+\setenv PSQLRC_COLOR true
+
+\set l 'SELECT * FROM '
+\set lc 'SELECT COUNT(*) FROM '
+
+\pset border 2
+\pset linestyle unicode
+\pset tuples_only off

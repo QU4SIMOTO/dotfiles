@@ -1,0 +1,4 @@
+[sqlfluff]
+dialect = postgres
+templater = jinja
+ignore = L003,L010,L014
