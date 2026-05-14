@@ -1,19 +1,15 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    enabled = false,
     event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup {
+      require("nvim-treesitter").setup({
         ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "haskell", "rust" },
-        sync_install = false,
         auto_install = true,
-        -- ignore_install = { "javascript" },
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        }
-      }
+      })
     end
   },
 }
