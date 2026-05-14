@@ -1,6 +1,7 @@
 \set HISTCONTROL ignoredups
 \pset null '[NULL]'
 \pset format aligned
+\pset pager off
 \timing on
 \setenv PSQLRC_COLOR true
 
