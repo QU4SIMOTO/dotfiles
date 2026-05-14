@@ -396,5 +396,8 @@
   "theme.matugen": false,
   "bar.customModules.storage.paths": [
     "/"
-  ]
+  ],
+  "notifications.position": "top right",
+  "notifications.timeout": 6993,
+  "theme.bar.menus.menu.notifications.height": "100em"
 }
