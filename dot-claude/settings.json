@@ -1,0 +1,36 @@
+{
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SESSION=$(tmux display-message -p '#S' 2>/dev/null || echo 'no-tmux'); WINDOW=$(tmux display-message -p '#W' 2>/dev/null || echo 'shell'); notify-send \"Claude Code [$SESSION:$WINDOW]\" \"Waiting for input\""
+          }
+        ]
+      }
+   ],
+  "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SESSION=$(tmux display-message -p '#S' 2>/dev/null || echo 'no-tmux'); WINDOW=$(tmux display-message -p '#W' 2>/dev/null || echo 'shell'); notify-send -u low \"Claude [$SESSION:$WINDOW]\" \"Task finished\""
+          }
+        ]
+      }
+    ]
+  }
+}
