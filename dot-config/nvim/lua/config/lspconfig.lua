@@ -67,6 +67,13 @@ return function()
             vim.env.VIMRUNTIME,
             "${3rd}/luv/library"
           }
+        },
+        format = {
+          enable = true,
+          defaultConfig = {
+            indent_style = "space",
+            indent_size = 2,
+          }
         }
       })
     end,
