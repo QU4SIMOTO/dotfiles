@@ -55,7 +55,7 @@ hl.config({
 		},
 		resize_on_border = false,
 		allow_tearing = false,
-		layout = "master",
+		layout = "dwindle",
 	},
 	decoration = {
 		rounding = 2,
@@ -82,6 +82,7 @@ hl.config({
 
 hl.config({
 	dwindle = {
+		force_split = 2,
 		preserve_split = true, -- You probably want this
 	},
 })
