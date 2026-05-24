@@ -7,6 +7,7 @@ local menu = "wofi --show drun"
 local music = "spotify - launcher"
 local browser = "firefox"
 
+local home = os.getenv("HOME")
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -15,7 +16,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpanel & hyprpaper")
 	hl.exec_cmd("wl-clipboard-history -t")
 	hl.exec_cmd("wl-paste --watch cliphist store")
-	hl.exec_cmd("rm '$HOME/.cache/cliphist/db'")
+	hl.exec_cmd("rm " .. home .. "/.cache/cliphist/db")
 
 	hl.exec_cmd("slack --enable-features=WebRTCPipeWireCapturer", { workspace = "1" })
 	hl.exec_cmd(browser, { workspace = "2" })
@@ -31,8 +32,8 @@ hl.env("GDK_BACKEND", "wayland")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("SDL_VIDEODRIVER", "wayland")
 hl.env("CLUTTER_BACKEND", "wayland")
-hl.env("GRIM_DEFAULT_DIR", "$HOME/screenshots")
-hl.env("WORK_DIR", "$HOME/work")
+hl.env("GRIM_DEFAULT_DIR", home .. "/screenshots")
+hl.env("WORK_DIR", home .. "/work")
 
 -----------------------
 ---- LOOK AND FEEL ----
