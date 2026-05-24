@@ -39,7 +39,6 @@ alias sess="~/bin/tmux-sessionizer"
 alias ssh-picker="~/bin/ssh-picker"
 alias hyp="start-hyprland"
 alias hypr="start-hyprland"
-alias rn=". ranger"
 alias fman='man -k . | fzf --prompt="Man> " \
   --preview="echo {} | sed \"s/^\([^ ]*\) (\([^)]*\)).*/man \2 \1/\" | sh" \
   --bind="enter:execute(echo {} | sed \"s/^\([^ ]*\) (\([^)]*\)).*/man \2 \1/\" | sh)+abort"
@@ -47,6 +46,13 @@ alias fman='man -k . | fzf --prompt="Man> " \
 
 function record { wf-recorder -g "$(slurp)" -f "${2:-$HOME/recording}.mkv" }
 function recording-to-mp4 { ffmpeg -i "${1:-$HOME/recording}.mkv" -codec copy  "${2:-$HOME/recording}.mp4" }
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
 
 if [[ -z "${SSH_CONNECTION}" ]]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

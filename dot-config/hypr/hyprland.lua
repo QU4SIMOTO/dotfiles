@@ -1,8 +1,8 @@
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
-local terminal = "alacritty"
-local fileManager = "dolphin"
+local terminal = "ghostty"
+local fileManager = "yazi"
 local menu = "wofi --show drun"
 local music = "spotify - launcher"
 local browser = "firefox"
