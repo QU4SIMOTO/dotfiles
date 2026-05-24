@@ -14,10 +14,7 @@ local home = os.getenv("HOME")
 hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 	hl.exec_cmd("hyprpanel & hyprpaper")
-	hl.exec_cmd("wl-clipboard-history -t")
-	hl.exec_cmd("wl-paste --watch cliphist store")
-	hl.exec_cmd("rm " .. home .. "/.cache/cliphist/db")
-
+	hl.exec_cmd("clipse -listen")
 	hl.exec_cmd("slack --enable-features=WebRTCPipeWireCapturer", { workspace = "1" })
 	hl.exec_cmd(browser, { workspace = "2" })
 	hl.exec_cmd(terminal .. " -e tmux new -As0", { workspace = "3" })
@@ -221,7 +218,14 @@ hl.bind(mainMod .. " + G", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/work/dev-scripts/convert-montu-id"))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist decode | wl-copy"))
+hl.bind(
+	mainMod .. " + C",
+	hl.dsp.exec_cmd([[ghostty -e clipse]], {
+		float = true,
+		center = true,
+		size = { "(monitor_w*0.5)", "(monitor_h*0.5)" },
+	})
+)
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
