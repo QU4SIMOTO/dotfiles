@@ -18,7 +18,10 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("slack --enable-features=WebRTCPipeWireCapturer", { workspace = "1" })
 	hl.exec_cmd(browser, { workspace = "2" })
 	hl.exec_cmd(terminal .. " -e tmux new -As0", { workspace = "3" })
-	hl.exec_cmd(terminal .. " --working-directory ~/notes -e nvim ~/notes/index.md", { workspace = "special:notes" })
+	hl.exec_cmd(
+		terminal .. " --working-directory=" .. os.getenv("HOME") .. "/notes -e nvim index.md",
+		{ workspace = "special:notes" }
+	)
 end)
 
 -------------------------------
