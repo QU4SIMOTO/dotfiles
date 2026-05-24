@@ -220,6 +220,9 @@ hl.bind(mainMod .. " + G", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 -- Screenshot (grab) and save
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/work/dev-scripts/convert-montu-id"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("cliphist list | wofi -S dmenu | cliphist decode | wl-copy"))
+
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
