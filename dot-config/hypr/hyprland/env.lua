@@ -1,0 +1,12 @@
+local vars = require("hyprland.vars")
+
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+hl.env("QT_QPA_PLATFORMTHEME", "kde")
+hl.env("XDG_MENU_PREFIX", "plasma-")
+hl.env("XCURSOR_SIZE", "24")
+hl.env("GDK_BACKEND", "wayland")
+hl.env("SDL_VIDEODRIVER", "wayland")
+hl.env("CLUTTER_BACKEND", "wayland")
+hl.env("GRIM_DEFAULT_DIR", vars.home_dir .. "/screenshots")
+hl.env("WORK_DIR", vars.work_dir)
