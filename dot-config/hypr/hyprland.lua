@@ -41,7 +41,7 @@ hl.env("WORK_DIR", home .. "/work")
 hl.config({
 	general = {
 		gaps_in = 2,
-		gaps_out = 2,
+		gaps_out = 1,
 		border_size = 2,
 		col = {
 			active_border = {
@@ -85,15 +85,9 @@ hl.config({
 		force_split = 2,
 		preserve_split = true, -- You probably want this
 	},
-})
-
-hl.config({
 	master = {
 		new_status = "master",
 	},
-})
-
-hl.config({
 	scrolling = {
 		fullscreen_on_one_column = true,
 	},
@@ -151,26 +145,21 @@ hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
-hl.bind(mainMod .. "+ SHIFT + H", hl.dsp.window.swap({ direction = "left" }))
-hl.bind(mainMod .. "+ SHIFT + L", hl.dsp.window.swap({ direction = "right" }))
-hl.bind(mainMod .. "+ SHIFT + K", hl.dsp.window.swap({ direction = "up" }))
-hl.bind(mainMod .. "+ SHIFT + J", hl.dsp.window.swap({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "down" }))
 
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
-hl.bind("ALT + H", hl.dsp.focus({ workspace = "1" }))
-hl.bind("SHIFT + ALT_L + H", hl.dsp.window.move({ workspace = "1" }))
-hl.bind("ALT + J", hl.dsp.focus({ workspace = "2" }))
-hl.bind("SHIFT + ALT_L + J", hl.dsp.window.move({ workspace = "2" }))
-hl.bind("ALT + K", hl.dsp.focus({ workspace = "3" }))
-hl.bind("SHIFT + ALT_L + K", hl.dsp.window.move({ workspace = "3" }))
-hl.bind("ALT + L", hl.dsp.focus({ workspace = "4" }))
-hl.bind("SHIFT + ALT_L + L", hl.dsp.window.move({ workspace = "4" }))
-hl.bind("ALT + SEMICOLON", hl.dsp.focus({ workspace = "5" }))
-hl.bind("SHIFT + ALT_L + SEMICOLON", hl.dsp.window.move({ workspace = "5" }))
+local alt_workspace_keys = { "H", "J", "K", "L", "SEMICOLON" }
+for i, key in ipairs(alt_workspace_keys) do
+	hl.bind("ALT + " .. key, hl.dsp.focus({ workspace = tostring(i) }))
+	hl.bind("SHIFT + ALT_L + " .. key, hl.dsp.window.move({ workspace = tostring(i) }))
+end
 
 -- notes scratchpad
 hl.bind(mainMod .. " + N", hl.dsp.workspace.toggle_special("notes"))
@@ -216,18 +205,17 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- Screenshot (grab) to clipboard
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
--- Screenshot (grab) and save
-hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
-
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/work/dev-scripts/convert-montu-id"))
-hl.bind(
-	mainMod .. " + C",
-	hl.dsp.exec_cmd([[ghostty -e clipse]], {
+local function floating_term(cmd, size_w, size_h)
+	return hl.dsp.exec_cmd("ghostty -e " .. cmd, {
 		float = true,
 		center = true,
-		size = { "(monitor_w*0.5)", "(monitor_h*0.5)" },
+		size = { "(monitor_w*" .. (size_w or 0.5) .. ")", "(monitor_h*" .. (size_h or 0.5) .. ")" },
 	})
-)
+end
+hl.bind(mainMod .. " + P", floating_term("~/work/dev-scripts/convert-montu-id"))
+hl.bind(mainMod .. " + C", floating_term("clipse"))
+hl.bind(mainMod .. " + D", floating_term("gh dash", 0.7, 0.8))
+hl.bind(mainMod .. " + ESCAPE", floating_term("btop", 0.8, 0.8))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
