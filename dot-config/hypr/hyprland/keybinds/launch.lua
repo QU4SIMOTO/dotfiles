@@ -9,7 +9,7 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(vars.terminal))
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(vars.file_manager))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(vars.menu))
+hl.bind(mainMod .. " + SPACE", floating_term("tlaunch", 0.4, 0.5))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })

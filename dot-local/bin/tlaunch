@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+CACHE="$HOME/.cache/tlaunch.cache"
+DIRS=(/usr/share/applications "$HOME/.local/share/applications" /var/lib/flatpak/exports/share/applications "$HOME/.local/share/flatpak/exports/share/applications")
+
+# Check if cache is stale: missing, or any app dir is newer than cache
+needs_rebuild=0
+if [ ! -f "$CACHE" ]; then
+  needs_rebuild=1
+else
+  for dir in "${DIRS[@]}"; do
+    [ -d "$dir" ] || continue
+    if [ "$dir" -nt "$CACHE" ]; then
+      needs_rebuild=1
+      break
+    fi
+  done
+fi
+
+if [ "$needs_rebuild" = 1 ]; then
+  mkdir -p "$(dirname "$CACHE")"
+  {
+    for dir in "${DIRS[@]}"; do
+      [ -d "$dir" ] || continue
+      for f in "$dir"/*.desktop; do
+        [ -f "$f" ] || continue
+        grep -q '^NoDisplay=true' "$f" && continue
+        grep -q '^Hidden=true' "$f" && continue
+        name=$(grep -m1 '^Name=' "$f" | cut -d= -f2-)
+        id=$(basename "$f" .desktop)
+        [ -n "$name" ] && printf '%s\t%s\n' "$name" "$id"
+      done
+    done | sort -u -k1,1
+  } > "$CACHE"
+fi
+
+choice=$(fzf \
+    --height=100% \
+    --with-nth=1 \
+    --delimiter=$'\t' < "$CACHE")
+
+[ -n "$choice" ] && {
+  id=$(echo "$choice" | cut -f2)
+  setsid -f gtk-launch "$id" >/dev/null 2>&1
+}
