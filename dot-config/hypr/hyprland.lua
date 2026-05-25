@@ -1,5 +1,6 @@
 require("hyprland.vars")
 require("hyprland.env")
+require("hyprland.monitors")
 require("hyprland.settings")
 require("hyprland.input")
 require("hyprland.rules")
