@@ -1,11 +1,13 @@
 local vars = require("hyprland.vars")
 local notes_dir = vars.home_dir .. "/notes"
+local slack_pwa_app_id = "mifhlabegleinidjicgeddcoidpkgbgl"
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 	hl.exec_cmd("hyprpanel & hyprpaper")
 	hl.exec_cmd("clipse -listen")
-	hl.exec_cmd("slack --enable-features=WebRTCPipeWireCapturer", { workspace = "1" })
+	-- hl.exec_cmd("slack --enable-features=WebRTCPipeWireCapturer", { workspace = "1" })
+	hl.exec_cmd(vars.chrome .. " --app-id=" .. slack_pwa_app_id .. " --profile-directory=Default", { workspace = "1" })
 	hl.exec_cmd(vars.browser, { workspace = "2" })
 	hl.exec_cmd(vars.terminal .. " -e tmux new -As0", { workspace = "3" })
 	hl.exec_cmd(

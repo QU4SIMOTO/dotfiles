@@ -7,6 +7,7 @@ M.file_manager = "yazi"
 M.menu = "wofi --show drun"
 M.music = "spotify - launcher"
 M.browser = "firefox"
+M.chrome = "google-chrome-stable"
 
 M.scratchpads = {
 	notes = { name = "notes", workspace = "special:notes" },
