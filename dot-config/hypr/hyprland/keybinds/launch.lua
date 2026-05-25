@@ -19,6 +19,7 @@ hl.bind(mainMod .. " + P", floating_term("~/work/dev-scripts/convert-montu-id"))
 hl.bind(mainMod .. " + C", floating_term("clipse"))
 hl.bind(mainMod .. " + D", floating_term("gh dash", 0.7, 0.8))
 hl.bind(mainMod .. " + ESCAPE", floating_term("btop", 0.8, 0.8))
+hl.bind(mainMod .. " + B", floating_term("bluetui"))
 
 hl.bind(mainMod .. " + N", hl.dsp.workspace.toggle_special(scratchpads.notes.name))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = scratchpads.notes.workspace }))
