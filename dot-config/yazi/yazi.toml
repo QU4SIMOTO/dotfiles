@@ -6,6 +6,11 @@ sort_reverse   = false
 sort_dir_first = true
 show_hidden    = false
 show_symlink   = true
+append_keymap = [
+  {
+    on = [ "g", "c" ], run  = "cd ~/dotfiles", desc = "Go to dotfiles"
+  }
+]
 
 [preview]
 wrap        = "no"
@@ -21,3 +26,4 @@ edit = [
 open = [
   { run = 'xdg-open "$@"', desc = "Open", orphan = true },
 ]
+
