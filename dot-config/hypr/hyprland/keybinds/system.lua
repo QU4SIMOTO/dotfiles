@@ -1,3 +1,10 @@
+local mainMod = require("hyprland.keybinds.util").mainMod
+
+hl.bind(
+	mainMod .. "+ SHIFT + Q",
+	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+)
+
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
 	"XF86AudioRaiseVolume",
