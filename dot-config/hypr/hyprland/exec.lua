@@ -14,4 +14,8 @@ hl.on("hyprland.start", function()
 		vars.terminal .. " --working-directory=" .. notes_dir .. " -e nvim index.md",
 		{ workspace = "special:notes" }
 	)
+	hl.exec_cmd(
+		vars.terminal .. " -e sh -c 'spotify_player & pid=$!; sleep 1; spotify_player playback pause; wait $pid'",
+		{ workspace = "special:music" }
+	)
 end)
