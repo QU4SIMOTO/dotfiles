@@ -95,8 +95,6 @@ return function()
   })
   vim.lsp.enable 'hls'
 
-  -- Markdown LSP
-  vim.lsp.enable 'marksman'
 
   vim.lsp.config('pylsp', {
     settings = {
