@@ -10,4 +10,8 @@ function M.floating_term(cmd, w, h)
 	})
 end
 
+function M.toggle_proc(cmd)
+	return hl.dsp.exec_cmd(string.format([[sh -c 'pgrep -x %q >/dev/null && pkill -x %q || %q &' ]], cmd, cmd, cmd))
+end
+
 return M

@@ -3,6 +3,7 @@ local util = require("hyprland.keybinds.util")
 
 local mainMod = util.mainMod
 local floating_term = util.floating_term
+local toggle_proc = util.toggle_proc
 local scratchpads = vars.scratchpads
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(vars.terminal))
@@ -17,7 +18,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 hl.bind(mainMod .. " + P", floating_term("~/work/dev-scripts/convert-montu-id"))
 hl.bind(mainMod .. " + C", floating_term("clipse"))
-hl.bind(mainMod .. " + D", floating_term("gh dash", 0.7, 0.8))
+hl.bind(mainMod .. " + D", toggle_proc("dvdstim"))
 hl.bind(mainMod .. " + ESCAPE", floating_term("btop", 0.8, 0.8))
 hl.bind(mainMod .. " + B", floating_term("bluetui"))
 
