@@ -1,0 +1,17 @@
+.{
+    .app = .{
+        .speed = 3,
+        .bounce_effect = .{ .solid = .red },
+        //.bounce_effect = .{ .vhs = .red },
+        //.bounce_effect = .{ .aberration = .red },
+        //.bounce_effect = .{ .wave = .red },
+        //.bounce_effect = .{ .neon = .red },
+        //.bounce_effect = .{ .scanlines = .red },
+        //.corner_effect = .plasma,
+        .corner_effect = .rainbow,
+    },
+    .image = .{ .bounds = .{
+        .w = 128,
+        .h = 128,
+    } },
+}
