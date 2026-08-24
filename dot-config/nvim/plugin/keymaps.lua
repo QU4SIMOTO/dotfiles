@@ -10,8 +10,11 @@ vim.keymap.set("v", "<Leader>xl", ":lua<CR>", { desc = "Execute the current sele
 vim.keymap.set("n", "<Leader>xx", "<Cmd>source %<CR>", { desc = "Execute the current file" })
 
 -- Clipboard copy and paste
-vim.keymap.set({ "n", "x" }, "<Leader>c", '"+y')
-vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p')
+vim.keymap.set({ "n", "x" }, "<Leader>c", '"+y', { desc = "Yank to system clipboard"})
+vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { desc = "Past from system clipboard" })
+vim.keymap.set({ "n", "x" }, "<Leader>cp", function()
+  vim.fn.setreg("+", vim.api.nvim_buf_get_name(0))
+end, { desc = "Copy current file path to system clipboard" })
 
 -- Format buffer
 vim.keymap.set({ "n", "v" }, "<Leader>f", function()
