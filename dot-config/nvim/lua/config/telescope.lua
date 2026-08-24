@@ -65,6 +65,8 @@ return function()
   vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags", })
   vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers", })
   vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Resume last search", })
+  vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Document symbols" })
+  vim.keymap.set("n", "<leader>fS", builtin.lsp_dynamic_workspace_symbols, { desc = "Workspace symbols" })
   vim.keymap.set("n", "<leader>fp",
     function()
       ---@diagnostic disable-next-line: param-type-mismatch
