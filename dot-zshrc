@@ -5,6 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export WORK="$HOME/work"
 export DIRENV_LOG_FORMAT=""
 export AWS_PAGER=""
+export DD_SITE=datadoghq.eu
 
 # Set name of the theme to load --- if set to "random", it will
 ZSH_THEME="robbyrussell"
